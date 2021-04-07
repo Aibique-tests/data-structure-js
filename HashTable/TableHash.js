@@ -33,6 +33,28 @@ class HashTable {
             return undefined
         }
     }
+    delete(key){
+        const address = this.hashFunction(key);
+        const currentBucket = this.data[address];
+
+        if(currentBucket){
+            for(let i = 0; i < currentBucket.length; i++){
+                if(currentBucket[i][0] === key){
+                    delete currentBucket[i]
+                }
+            }
+        }
+        return this.data;
+    }
+    getKeys(){
+        let allKeys = []
+        for(let i = 0; i < this.data.length ; i++){
+            if( this.data[i]){
+                 allKeys.push(this.data[i])
+            }
+        }
+        return allKeys
+    }
 
 }
 
