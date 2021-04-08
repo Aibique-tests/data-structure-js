@@ -5,15 +5,70 @@
 
 class Node {
     constructor(value){
-        // Structure the Node value
+        this.value = value
+        this.next= null
     }
 }
 
 class MySinglyLinkedList {
     constructor(value){
+        this.head = {
+            value: value,
+            next: null
+        }
+        this.tail = this.head
+        this.length = 1
+    }
+    append(value){
+        const newNode = new Node(value);
+
+        this.tail.next = newNode
+        this.tail = newNode
+        this.length ++;
+
+        return this
 
     }
-    append(node){
-        // Create an instance of node with the new value
+    prepend(value){
+        const newNode = new Node(value)
+
+        newNode.next = this.head;
+        this.head = newNode
+        this.length ++
+
+        return this
+    }
+    insert(index, value){
+        //validate if index is out of range
+        if(index >= this.length){
+            return this.append(value)
+        }
+        // Node
+        const newNode = new Node(value)
+        // Previous Node
+        const previousNode = this.getIndexNode(index - 1)
+        // Holding Node
+        const holdingNode = previousNode.next
+
+        //Now make the exchange
+        previousNode.next = newNode;
+        newNode.next = holdingNode
+        this.length ++;
+
+        return this
+    }
+    getIndexNode(previousIndex){
+        // reducer
+        let current = 0;
+        let currentNode = this.head;
+        
+        do {
+            currentNode = currentNode.next;
+            current ++;
+
+            return currentNode
+        } while (current < previousIndex);
     }
 }
+
+const mySingly = new MySinglyLinkedList(1)
