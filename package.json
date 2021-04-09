@@ -1,0 +1,8 @@
+{
+  "name": "data-structure-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Aibique-tests/data-structure-js.git",
+  "author": "aybike <tonn.raus09@gmail.com>",
+  "license": "MIT"
+}

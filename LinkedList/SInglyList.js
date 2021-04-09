@@ -69,6 +69,26 @@ class MySinglyLinkedList {
             return currentNode
         } while (current < previousIndex);
     }
+    erase(value){
+        let currentNode = this.head
+        let currentIndex = 0;
+        while (value !== currentNode.value) {
+            currentNode = currentNode.next;
+            currentIndex++;
+
+        }
+        //get previous Node
+        const PreviousNode = this.getIndexNode(currentIndex - 1)
+        //get next Node
+        const HoldingNode = currentNode.next;
+
+        // make the changes 
+        currentNode= undefined
+        PreviousNode.next = HoldingNode;
+        this.length --
+        
+        return this
+    }
 }
 
 const mySingly = new MySinglyLinkedList(1)
